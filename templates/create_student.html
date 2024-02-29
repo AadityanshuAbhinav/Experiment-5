@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Student</title>
+    <style>
+    	div {
+    		margin-bottom:40px;
+    	}
+    </style>
+</head>
+<body>
+    <h1>Add a Student</h1>
+    <form action="{{ url_for('create_student') }}" method="POST" id="create-form">
+        <div>
+            <label>Roll Number:</label>
+            <input type="text" name="roll" required />
+        </div>
+        <div>
+            <label>First Name:</label>
+            <input type="text" name="f_name" required />
+        </div>
+        <div>
+            <label>Last Name:</label>
+            <input type="text" name="l_name" />
+        </div>
+        <div>
+            <label>Select Courses:</label>
+            {% for course in courses %}
+            <input type="checkbox" name="courses" value="{{ course.course_code }}" />
+            <label>{{ course.course_name }}</label>
+            {% endfor %}
+        </div>
+        <div>
+            <input type="submit" value="Submit">
+        </div>
+    </form>
+</body>
+</html>
+
